@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+""" module for 0-minioperations """
+
 def minOperations(n):
     if n <= 1:
         return n
