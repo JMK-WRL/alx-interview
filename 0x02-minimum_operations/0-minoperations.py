@@ -1,16 +1,22 @@
 #!/usr/bin/python3
-""" module for 0-minioperations """
+""" Module for 0-min operations """
 
 def minOperations(n):
-    if n <= 1:
-        return n
 
-    dp = [float('inf')] * (n + 1)
-    dp[1] = 0
+    """
+    minOperations
+    Gets fewest # of operations to result in exactly n H characters
+    """
 
-    for i in range(2, n + 1 ):
-        for j in range(1, i // 2 + 1):
-            if i % j == 0:
-                dp[i] = min(dp[i], dp[j] + i // j)
+    if (n < 2):
+        return 0
+    ops, root = 0, 2
+    while root <= n:
+        if n % root == 0:
+            ops += root
+            n = n / root
+            root -= 1
 
-    return dp[n]
+        root += 1
+
+    return ops
